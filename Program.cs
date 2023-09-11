@@ -26,8 +26,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapMethods("/math/{operation}/{*url}", new[] { "GET" }, async (HttpContext context, IAICodeEngine codeGenerator) =>
 {
-    using StreamReader reader = new(context.Request.Body);
-    var body = await reader.ReadToEndAsync();
     var operationType = "math";
     var operation = context.Request.RouteValues["operation"]?.ToString() ?? string.Empty;
     var valuesString = context.Request.RouteValues["url"]?.ToString() ?? string.Empty;
